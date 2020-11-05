@@ -44,7 +44,7 @@ class Node:
         except:
             print('Node does not exist')
 
-    def breadth_first_search(self, value):
+    def breadth_search(self, value):
         queue = [self]
         while len(queue) > 0:
             node = queue.pop()
@@ -54,15 +54,29 @@ class Node:
                 queue.extend(node.children)
         return False
 
+    def depth_search(self, value):
+        if not self:
+            return
+
+        if self.value == value:
+            return self
+
+        for child in self.children:
+            found = child.depth_search(value)
+            if found:
+                return found
 
 # node1 = Node("root1")
 # node2 = Node("root2")
 # node3 = Node("root3")
+# node4 = Node("root4")
+# node5 = Node("root5")
 
 # node3.parent = node1
-# node3.parent = node2
-# node1.add_child(node3)
-# node1.add_child(node3)
+# node2.parent = node1
+# node4.parent = node2
+# node5.parent = node4
 
+# print(node1.depth_search("root5").value)
 # print(node1.children)
 # print(node2.children)
