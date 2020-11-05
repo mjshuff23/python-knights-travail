@@ -44,6 +44,16 @@ class Node:
         except:
             print('Node does not exist')
 
+    def breadth_first_search(self, value):
+        queue = [self]
+        while len(queue) > 0:
+            node = queue.pop()
+            if node.value == value:
+                return True
+            else:
+                queue.extend(node.children)
+        return False
+
 
 # node1 = Node("root1")
 # node2 = Node("root2")
