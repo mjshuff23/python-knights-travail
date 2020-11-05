@@ -34,9 +34,19 @@ class KnightPathFinder:
     def considered_positions(self):
         return self._considered_positions
 
+    def build_move_tree(self):
+        self.new_move_positions(self._root.value)
+        for item in self._considered_positions:
+            self._root.add_child(tree.Node(item))
+
+
 test_coords = (-1,-1)
 xander = KnightPathFinder(test_coords)
 xander.new_move_positions(test_coords)
+
+finder = KnightPathFinder((0, 0))
+finder.build_move_tree()
+print(finder._root.children)
 
 # finder = KnightPathFinder((0, 0))
 # print(finder.new_move_positions((0, 0)))
