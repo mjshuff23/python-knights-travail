@@ -66,17 +66,17 @@ class Node:
             if found:
                 return found
 
-# node1 = Node("root1")
-# node2 = Node("root2")
-# node3 = Node("root3")
-# node4 = Node("root4")
-# node5 = Node("root5")
+node1 = Node("root1")
+node2 = Node("root2")
+node3 = Node("root3")
+node4 = Node("root4")
+node5 = Node("root5")
 
-# node3.parent = node1
-# node2.parent = node1
-# node4.parent = node2
-# node5.parent = node4
+node3.parent = node1
+node2.parent = node1
+node4.parent = node2
+node5.parent = node4
 
-# print(node1.depth_search("root5").value)
+print(node1.depth_search("root5"))
 # print(node1.children)
 # print(node2.children)

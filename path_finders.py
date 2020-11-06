@@ -50,6 +50,19 @@ class KnightPathFinder:
                 queue.append(newNode)
                 parent.add_child(newNode)
 
+    def find_path(self, end_position):
+        final_node = self._root.depth_search(end_position)
+        return self.trace_to_root(final_node)
+
+    def trace_to_root(self, end_node):
+        current_node = end_node
+        node_list = [end_node.value]
+        while current_node != self._root:
+            node_list.append(current_node.parent.value)
+            current_node = current_node.parent
+        node_list.reverse()
+        return node_list
+
 
 test_coords = (-1, -1)
 xander = KnightPathFinder(test_coords)
@@ -57,7 +70,11 @@ xander.new_move_positions(test_coords)
 
 finder = KnightPathFinder((0, 0))
 finder.build_move_tree()
-print(finder._root.children[0].children)
+# print(finder._root.children[0].children)
+
+finder = KnightPathFinder((0, 0))
+finder.build_move_tree()
+print(finder.find_path((7, 6)))  # => [(0, 0), (2, 1)]
 
 # finder = KnightPathFinder((0, 0))
 # print(finder.new_move_positions((0, 0)))
